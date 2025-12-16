@@ -5,12 +5,9 @@ export default function Navbar() {
   const links = ["Home", "Categories", "New Arrivals", "About Us", "Contact"];
 
   return (
-    <header className="w-full bg-white text-black px-6 md:px-12 py-4 font-poppins sticky top-0 z-50 shadow-sm">
+    <header className="w-full bg-black/30 text-white px-6 md:px-12 py-4 font-poppins sticky top-0 z-50 backdrop-blur-sm">
       <div className="flex items-center justify-between">
-        {/* LOGO */}
         <h1 className="text-2xl font-bold tracking-wide">Book Library</h1>
-
-        {/* LINKS + search  desktop */}
         <div className="hidden md:flex items-center gap-10 text-sm">
           <div className="flex items-center gap-6">
             {links.map((link) => (
@@ -25,8 +22,6 @@ export default function Navbar() {
             className="px-3 py-1 rounded-md border border-gray-300 text-gray-900 text-sm w-48 focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
         </div>
-
-        {/* BUTTONS */}
         <button
           className="md:hidden text-black"
           onClick={() => setIsOpen(!isOpen)}
@@ -35,8 +30,6 @@ export default function Navbar() {
           ☰
         </button>
       </div>
-
-      {/* MOBILE LINKS */}
       {isOpen && (
         <nav className="md:hidden mt-4 flex flex-col gap-4 text-sm">
           {links.map((link) => (
