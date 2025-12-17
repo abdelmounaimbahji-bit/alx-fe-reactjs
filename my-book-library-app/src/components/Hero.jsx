@@ -1,5 +1,5 @@
 export default function Hero() {
-  const handleViewBook = () => alert("📖 ص");
+  const handleViewBook = () => alert("📖 the book page");
 
   return (
     <section
@@ -13,10 +13,10 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/70"></div>
 
       {/* content */}
-      <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
+      <div className="relative z-10 h-full flex flex-col items-start justify-center text-left px-6 md:px-20">
         <h2 className="text-5xl md:text-6xl font-bold mb-4">The Silent Stars</h2>
         <p className="text-xl md:text-2xl font-light mb-2">by Elara Vance</p>
-        <p className="text-base md:text-lg mb-8 opacity-90 max-w-2xl mx-auto">
+        <p className="text-base md:text-lg mb-8 opacity-90 max-w-2xl ">
           cosmic mystery across distant galaxies
         </p>
         <button

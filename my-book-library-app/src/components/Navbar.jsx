@@ -5,9 +5,9 @@ export default function Navbar() {
   const links = ["Home", "Categories", "New Arrivals", "About Us", "Contact"];
 
   return (
-    <header className="w-full bg-black/30 text-white px-6 md:px-12 py-4 font-poppins sticky top-0 z-50 backdrop-blur-sm">
+    <header className="w-full bg-white  text-black px-6 md:px-12 py-4 font-poppins sticky top-0 z-50 shadow-sm">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold tracking-wide">Book Library</h1>
+        <h1 className="text-2xl font-bold tracking-wide">BOOKWORM</h1>
         <div className="hidden md:flex items-center gap-10 text-sm">
           <div className="flex items-center gap-6">
             {links.map((link) => (
