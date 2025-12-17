@@ -1,19 +1,37 @@
 import { useState } from "react";
+import { Link } from "react-router-dom"; 
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const links = ["Home", "Categories", "New Arrivals", "About Us", "Contact"];
+
+  
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "Categories", path: "/categories" },
+    { name: "New Arrivals", path: "/new-arrivals" },
+    { name: "About Us", path: "/about" },
+    { name: "Contact", path: "/contact" },
+  ];
 
   return (
-    <header className="w-full bg-white  text-black px-6 md:px-12 py-4 font-poppins sticky top-0 z-50 shadow-sm">
+    <header className="w-full bg-white text-black px-6 md:px-12 py-4 font-poppins sticky top-0 z-50 shadow-sm">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold tracking-wide">BOOKWORM</h1>
+        {/* LOGO*/}
+        <Link to="/" className="text-2xl font-bold tracking-wide">
+          BOOKWORM
+        </Link>
+
+        {/* Desktop: Links + Search */}
         <div className="hidden md:flex items-center gap-10 text-sm">
           <div className="flex items-center gap-6">
-            {links.map((link) => (
-              <a key={link} href="#" className="hover:text-blue-600 transition-colors">
-                {link}
-              </a>
+            {navLinks.map((item) => (
+              <Link
+                key={item.name}
+                to={item.path}
+                className="hover:text-blue-600 transition-colors"
+              >
+                {item.name}
+              </Link>
             ))}
           </div>
           <input
@@ -22,6 +40,8 @@ export default function Navbar() {
             className="px-3 py-1 rounded-md border border-gray-300 text-gray-900 text-sm w-48 focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
         </div>
+
+        {/* Mobile toggle */}
         <button
           className="md:hidden text-black"
           onClick={() => setIsOpen(!isOpen)}
@@ -30,12 +50,19 @@ export default function Navbar() {
           ☰
         </button>
       </div>
+
+      {/* Mobile menu */}
       {isOpen && (
         <nav className="md:hidden mt-4 flex flex-col gap-4 text-sm">
-          {links.map((link) => (
-            <a key={link} href="#" className="hover:text-blue-600">
-              {link}
-            </a>
+          {navLinks.map((item) => (
+            <Link
+              key={item.name}
+              to={item.path}
+              className="hover:text-blue-600"
+              onClick={() => setIsOpen(false)}
+            >
+              {item.name}
+            </Link>
           ))}
           <input
             type="text"
