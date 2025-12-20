@@ -1,23 +1,24 @@
 import { useEffect, useState } from "react";
-import { getNewArrivals } from "../services/openLibrary";
+import { useSearchParams } from "react-router-dom";
+import { searchBooks } from "../services/openLibrary";
 
-export default function NewArrivals() {
+export default function Search() {
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get("q");
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getNewArrivals(12).then((data) => {
-      setBooks(data);
-      setLoading(false);
-    });
-  }, []);
+    if (!query) return;
+    searchBooks(query, 20).then(setBooks).finally(() => setLoading(false));
+  }, [query]);
 
-  if (loading) return <p className="text-center py-10">Loading new arrivals...</p>;
+  if (loading) return <p className="text-center py-10">Searching...</p>;
 
   return (
     <div className="min-h-screen bg-white py-16 px-6 font-poppins">
       <h2 className="text-4xl md:text-5xl font-bold text-black mb-10 text-center">
-        New Arrivals
+        Search Results for "{query}"
       </h2>
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">

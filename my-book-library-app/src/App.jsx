@@ -4,6 +4,7 @@ import Categories from "./pages/Categories";
 import NewArrivals from "./pages/NewArrivals";
 import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
+import Search from "./pages/Search";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <Route path="/new-arrivals" element={<NewArrivals />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/search" element={<Search />} />
       </Routes>
     </BrowserRouter>
   );
