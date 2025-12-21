@@ -5,6 +5,7 @@ import NewArrivals from "./pages/NewArrivals";
 import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
 import Search from "./pages/Search";
+import BookDetail from "./pages/BookDetail";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/book/:key" element={<BookDetail />} />
       </Routes>
     </BrowserRouter>
   );
