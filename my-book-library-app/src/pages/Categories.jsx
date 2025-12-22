@@ -32,7 +32,7 @@ export default function Categories() {
 
   if (loading)
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center font-poppins">
+      <div className="min-h-screen min-w-screen bg-white flex items-center justify-center font-poppins">
         <p className="text-gray-600">Loading categories...</p>
       </div>
     );
@@ -69,6 +69,7 @@ export default function Categories() {
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
                 {books.map((book) => (
                   <Link to={`/book/${book.key}`}
+
                     key={book.key}
                     className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group"
                   >

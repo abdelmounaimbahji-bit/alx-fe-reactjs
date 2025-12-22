@@ -61,6 +61,7 @@ export default function NewArrivals() {
 
               
               <Link to={`/book/${book.key}`}
+
                 className="w-full bg-blue-700 hover:bg-blue-800 text-white py-2.5 rounded-md text-sm font-medium transition text-center block"
               >
                 View Book

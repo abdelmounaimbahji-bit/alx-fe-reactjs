@@ -1,4 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+
 import Home from "./pages/Home";
 import Categories from "./pages/Categories";
 import NewArrivals from "./pages/NewArrivals";
@@ -10,6 +12,9 @@ import BookDetail from "./pages/BookDetail";
 export default function App() {
   return (
     <BrowserRouter>
+      
+      <Navbar />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/categories" element={<Categories />} />

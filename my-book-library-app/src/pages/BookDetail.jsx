@@ -2,41 +2,52 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 
-export default function BookDetail() {
-  const { key } = useParams(); // /book/OL12345W
+export default function BookDetails() {
+  const { key } = useParams(); // Google Books ID
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`https://openlibrary.org${key}.json`)
-      .then((res) => res.json())
-      .then((data) => {
+    async function fetchBook() {
+      try {
+        const res = await fetch(
+          `https://www.googleapis.com/books/v1/volumes/${key}`
+        );
+
+        if (!res.ok) throw new Error("Book not found");
+
+        const data = await res.json();
         setBook(data);
+      } catch (error) {
+        console.error("Book details error:", error);
+        setBook(null);
+      } finally {
         setLoading(false);
-      })
-      .catch(() => setLoading(false));
+      }
+    }
+
+    fetchBook();
   }, [key]);
 
-  if (loading) return <p className="text-center py-10">Loading book details...</p>;
-  if (!book) return <p className="text-center py-10">Book not found.</p>;
+  if (loading)
+    return <p className="text-center py-10">Loading book details...</p>;
 
-  
-  const cover = book.covers
-    ? `https://covers.openlibrary.org/b/id/${book.covers[0]}-L.jpg`
-    : "https://via.placeholder.com/400x600?text=No+Cover";
+  if (!book)
+    return <p className="text-center py-10">Book not found.</p>;
 
-  // the description 
+  const info = book.volumeInfo;
+
+  const cover =
+    info.imageLinks?.thumbnail ||
+    "https://via.placeholder.com/400x600?text=No+Cover";
+
   const description =
-    typeof book.description === "string"
-      ? book.description
-      : book.description?.value || "No description available.";
+    info.description || "No description available.";
 
-  // the author
-  const authorName = book.authors?.[0]?.name || "Unknown Author";
+  const authorName = info.authors?.[0] || "Unknown Author";
 
   return (
     <div className="min-h-screen bg-white py-10 px-6 font-poppins">
-      
       <div className="max-w-5xl mx-auto mb-8">
         <Link
           to="/"
@@ -47,37 +58,34 @@ export default function BookDetail() {
         </Link>
       </div>
 
-      
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
-       
         <div className="md:col-span-1">
           <img
             src={cover}
-            alt={book.title}
+            alt={info.title}
             className="w-full h-[500px] object-cover rounded-2xl shadow-xl"
           />
         </div>
 
-        
         <div className="md:col-span-2 space-y-6">
           <h1 className="text-4xl md:text-5xl font-bold text-black">
-            {book.title}
+            {info.title}
           </h1>
-          <h2 className="text-xl text-gray-700">by {authorName}</h2>
 
-          
+          <h2 className="text-xl text-gray-700">
+            by {authorName}
+          </h2>
+
           <div className="prose prose-sm max-w-none text-gray-800">
             <p>{description}</p>
           </div>
 
-          
-          {book.first_publish_year && (
+          {info.publishedDate && (
             <p className="text-sm text-gray-600">
-              First published: {book.first_publish_year}
+              Published: {info.publishedDate}
             </p>
           )}
 
-          
           <button className="mt-4 bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-md font-semibold transition">
             Add to Reading List
           </button>

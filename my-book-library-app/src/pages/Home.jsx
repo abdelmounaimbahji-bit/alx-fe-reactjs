@@ -1,4 +1,3 @@
-import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import SearchSection from "../components/SearchSection";
 import CategoriesSection from "../components/CategoriesSection";
@@ -9,7 +8,7 @@ import ContactSection from "../components/ContactSection";
 export default function Home() {
   return (
     <div className="min-h-screen min-w-screen bg-white">
-      <Navbar />
+      
       <Hero />
       <SearchSection />
       <CategoriesSection />
