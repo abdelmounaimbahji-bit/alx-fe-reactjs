@@ -47,7 +47,7 @@ export default function BookDetails() {
   const authorName = info.authors?.[0] || "Unknown Author";
 
   return (
-    <div className="min-h-screen bg-white py-10 px-6 font-poppins">
+    <div className="min-h-screen min-w-screen bg-white py-10 px-6 font-poppins">
       <div className="max-w-5xl mx-auto mb-8">
         <Link
           to="/"
