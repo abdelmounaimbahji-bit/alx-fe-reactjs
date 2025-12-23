@@ -49,13 +49,7 @@ export default function BookDetails() {
   return (
     <div className="min-h-screen min-w-screen bg-white py-10 px-6 font-poppins">
       <div className="max-w-5xl mx-auto mb-8">
-        <Link
-          to="/"
-          className="flex items-center gap-2 text-blue-700 hover:text-blue-800 font-semibold transition"
-        >
-          <FaArrowLeft />
-          Back to Home
-        </Link>
+
       </div>
 
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">

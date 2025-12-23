@@ -22,16 +22,10 @@ export default function NewArrivals() {
     );
 
   return (
-    <div className="min-h-screen bg-white py-10 px-6 font-poppins">
+    <div className="min-h-screen min-w-screen bg-white py-10 px-6 font-poppins">
       
       <div className="max-w-7xl mx-auto flex items-center justify-between mb-10">
-        <Link
-          to="/"
-          className="flex items-center gap-2 text-blue-700 hover:text-blue-800 font-semibold transition"
-        >
-          <FaArrowLeft />
-          Back to Home
-        </Link>
+
 
         <h2 className="text-4xl md:text-5xl font-bold text-black">
           New Arrivals

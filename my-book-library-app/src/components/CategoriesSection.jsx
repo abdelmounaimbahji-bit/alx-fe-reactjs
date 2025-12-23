@@ -31,13 +31,13 @@ export default function Categories() {
 
   if (loading)
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center font-poppins">
+      <div className="min-h-screen min-w-screen bg-white flex items-center justify-center font-poppins">
         <p className="text-gray-600">Loading categories...</p>
       </div>
     );
 
   return (
-    <div className="min-h-screen bg-white py-20 px-6 font-poppins">
+    <div className="min-h-screen min-w-screen  bg-white py-20 px-6 font-poppins">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold text-center text-black mb-12">
           Explore Categories

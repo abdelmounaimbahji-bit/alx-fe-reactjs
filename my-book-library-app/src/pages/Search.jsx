@@ -16,7 +16,7 @@ export default function Search() {
   if (loading) return <p className="text-center py-10">Searching...</p>;
 
   return (
-    <div className="min-h-screen bg-white py-16 px-6 font-poppins">
+    <div className="min-h-screen min-w-screen bg-white py-16 px-6 font-poppins">
       <h2 className="text-4xl md:text-5xl font-bold text-black mb-10 text-center">
         Search Results for "{query}"
       </h2>
